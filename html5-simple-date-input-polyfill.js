@@ -171,8 +171,8 @@ function calendarExtender (theInput) {
     this.theInput.value = '' + this.selectedDate.getFullYear() + '-' + monthText + '-' + dayText + '';
 
     //make angular see the change
-    var fakeEvent = document.createEvent('KeyboardEvent');
-    fakeEvent.initEvent("change", true, false);
+    var fakeEvent = document.createEvent('Event');
+    fakeEvent.initEvent('input', true, false);
     this.theInput.dispatchEvent(fakeEvent);
   };
 
