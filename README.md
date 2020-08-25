@@ -10,7 +10,7 @@ Support Angular 2+ (and possibly other libraries) bindings.
 #### webpack
 
 In package.json, under dependencies, add
-`"html5-simple-date-input-polyfill": "bdavis252/html5-simple-date-input-polyfill#1.1"`
+`"html5-simple-date-input-polyfill": "bdavis252/html5-simple-date-input-polyfill#1.2"`
 (github claims semver syntax works here but I haven't tried it)
 
 then run npm i.
