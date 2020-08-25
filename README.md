@@ -3,15 +3,24 @@ Just include this simple script and IE (>=10) and Firefox will support `<input t
 
 Support dynamically created inputs, so can be used in single page applications.
 
-Support [AngularJS](https://github.com/angular/angular.js) (and possibly other libraries) bindings.
+Support Angular 2+ (and possibly other libraries) bindings.
 
 # Usage
 
-#### browserify
+#### webpack
 
-`npm install html5-simple-date-input-polyfill --save`
+In package.json, under dependencies, add
+`"html5-simple-date-input-polyfill": "bdavis252/html5-simple-date-input-polyfill#1.1"`
+(github claims semver syntax works here but I haven't tried it)
 
-`require('html5-simple-date-input-polyfill');`
+then run npm i.
+
+Afterwards, add this to your styles.css
+`@import '../node_modules/html5-simple-date-input-polyfill/html5-simple-date-input-polyfill.css';`
+(there is an scss version too, see below)
+
+And in polyfills.ts add this.
+`import 'html5-simple-date-input-polyfill';`
 
 #### Browser
 
