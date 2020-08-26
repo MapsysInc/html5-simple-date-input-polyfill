@@ -123,9 +123,13 @@ function calendarExtender (theInput) {
     //create the days cols according to the selected month days
     var aRow;
     var aCell;
+    var hasMinDate = self.theInput.hasAttribute('min');
+    var minDate = hasMinDate ? new Date(self.theInput.getAttribute('min')) : null;
+    var hasMaxDate = self.theInput.hasAttribute('max');
+    var maxDate = hasMaxDate ? new Date(self.theInput.getAttribute('max')) : null;
     for (var cellNum = 0; cellNum < maxDays + startDay; cellNum++) {
 
-      //crate a table row in the begining and after each 7 cells
+      //create a table row in the begining and after each 7 cells
       if (cellNum % 7 === 0) {
         aRow = theTable.insertRow(-1);
       }
@@ -140,17 +144,23 @@ function calendarExtender (theInput) {
           aCell.className = 'selected';
         }
 
-        //when clicking on a day in the days table
-        aCell.addEventListener('click', function () {
+        if ((hasMinDate && new Date(year, month, dayNum) < minDate) ||
+            (hasMaxDate && new Date(year, month, dayNum - 1) > maxDate) )  {
+          aCell.className = 'disabled';
+        } else {
+          //when clicking on a day in the days table
+          aCell.addEventListener('click', function () {
 
-          //mark the dey with 'selected' css class
-          self.theCalDiv.querySelector('.selected').className = '';
-          this.className = 'selected';
+            //mark the day with 'selected' css class
+            var currentlySelected =self.theCalDiv.querySelector('.selected');
+            if (currentlySelected) currentlySelected.className = '';
+            this.className = 'selected';
 
-          self.selectedDate.setDate(parseInt(this.innerHTML));
-          self.selectDate();
-          self.theInput.focus();
-        });
+            self.selectedDate.setDate(parseInt(this.innerHTML));
+            self.selectDate();
+            self.theInput.focus();
+          });
+        }
       }
     }
   };
