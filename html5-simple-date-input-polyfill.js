@@ -30,7 +30,7 @@ function calendarExtender (theInput) {
     //creating a container div around the input, the calendar will also be there
     this.container = document.createElement('div');
     this.container.className = 'calendarContainer';
-    this.container.style.display = 'inline-block';
+    this.container.style.display = 'flex';
     this.theInput.parentNode.replaceChild(this.container, this.theInput);
     this.container.appendChild(this.theInput);
 
